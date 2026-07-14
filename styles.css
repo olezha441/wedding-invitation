@@ -1,0 +1,850 @@
+:root {
+  --paper: #f3ecdf;
+  --paper-deep: #e4d8c7;
+  --ink: #1f1d1a;
+  --muted: #63594f;
+  --line: rgba(31, 29, 26, 0.58);
+  --fine-line: rgba(31, 29, 26, 0.28);
+  --red: #8a2f24;
+  --red-dark: #6f231b;
+  --white: #fffaf0;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 28%),
+    linear-gradient(135deg, #ded2c1, #f7efe2 48%, #d8c7b3);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+button,
+input,
+select,
+textarea { font: inherit; }
+
+a { color: inherit; }
+
+.medical-card {
+  position: relative;
+  width: min(100%, 1060px);
+  margin: 0 auto;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(243, 236, 223, 0.92), rgba(243, 236, 223, 0.92)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(31, 29, 26, 0.035) 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, rgba(31, 29, 26, 0.03) 32px);
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  box-shadow: 0 24px 70px rgba(63, 45, 25, 0.28);
+}
+
+.medical-card::before,
+.medical-card::after {
+  position: absolute;
+  inset: 12px;
+  content: "";
+  pointer-events: none;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.medical-card::after {
+  inset: 18px;
+  border-color: var(--fine-line);
+}
+
+.card-header,
+.hero-record,
+.record-table,
+.meeting-section,
+.photo-strip,
+.recommendations,
+.rsvp-section,
+.card-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.card-header {
+  display: grid;
+  grid-template-columns: 120px 1fr minmax(260px, 310px);
+  gap: 28px;
+  align-items: center;
+  padding: 8px 18px 22px;
+  border-bottom: 2px solid var(--line);
+}
+
+.medical-sign {
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.medical-sign .wing {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  transform: translateY(16px) rotate(180deg);
+}
+
+.medical-sign .rod {
+  font-size: 72px;
+}
+
+.document-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.document-subtitle {
+  margin: 6px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.card-meta {
+  display: grid;
+  position: relative;
+  min-height: 150px;
+  padding-left: 24px;
+  align-content: center;
+  gap: 18px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: end;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+}
+
+.card-meta label span {
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-7px);
+}
+
+.card-meta strong {
+  color: var(--red);
+  font-family: "Bad Script", cursive;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.heart-icon {
+  position: absolute;
+  right: 4px;
+  top: 34px;
+  color: var(--red);
+  font-size: 58px;
+  line-height: 1;
+}
+
+.hero-record {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+  align-items: center;
+  padding: 34px 18px 28px;
+  border-bottom: 2px solid var(--line);
+}
+
+.patient-names {
+  text-align: center;
+}
+
+h1,
+h2,
+p,
+figure { margin: 0; }
+
+h1 {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(46px, 7vw, 78px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h1 span { grid-column: 3; }
+
+.pulse-line {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  width: min(100%, 440px);
+  margin: 12px auto 10px;
+  color: var(--red);
+}
+
+.pulse-line i {
+  height: 2px;
+  background:
+    linear-gradient(90deg, transparent 0 25%, var(--red) 25% 54%, transparent 54% 58%, var(--red) 58%);
+}
+
+.pulse-line b {
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 0.8;
+}
+
+.patient-names p,
+.script-value {
+  color: var(--red);
+  font-family: "Bad Script", cursive;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.2;
+}
+
+.main-photo {
+  padding: 12px;
+  background: rgba(255, 250, 240, 0.74);
+  border: 1px solid var(--fine-line);
+  box-shadow: 0 12px 28px rgba(44, 30, 16, 0.16);
+  transform: rotate(1deg);
+}
+
+.main-photo img,
+.photo-strip img,
+.campus-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-photo img {
+  aspect-ratio: 4 / 5;
+  object-position: 48% 42%;
+  filter: saturate(0.72) contrast(1.02);
+}
+
+.record-table {
+  border-bottom: 2px solid var(--line);
+}
+
+.record-row {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  min-height: 72px;
+  border-bottom: 1px solid var(--line);
+}
+
+.record-row:last-child { border-bottom: 0; }
+
+.record-label,
+.record-value,
+.record-code {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+}
+
+.record-label {
+  gap: 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.record-label span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.record-value {
+  min-width: 0;
+  border-left: 1px solid var(--line);
+}
+
+.record-value b {
+  margin-left: 22px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.record-code {
+  justify-content: space-between;
+  border-left: 1px solid var(--line);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.record-code strong {
+  color: var(--ink);
+  font-family: "Bad Script", cursive;
+  font-size: 34px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.accent {
+  color: var(--red);
+  font-family: "Bad Script", cursive;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.place {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+}
+
+.place strong,
+.place span {
+  color: var(--red);
+  font-family: "Bad Script", cursive;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.place a {
+  width: fit-content;
+  margin-top: 6px;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.meeting-section,
+.recommendations,
+.rsvp-section {
+  padding: 28px 18px;
+  border-bottom: 2px solid var(--line);
+}
+
+.section-title {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-title span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--red);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  font-size: 28px;
+}
+
+h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(25px, 4vw, 35px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.meeting-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.campus-photo {
+  padding: 10px;
+  background: rgba(255, 250, 240, 0.78);
+  border: 1px solid var(--fine-line);
+  transform: rotate(-1deg);
+}
+
+.campus-photo img {
+  aspect-ratio: 16 / 10;
+  filter: sepia(0.18) saturate(0.86);
+}
+
+.campus-photo figcaption {
+  margin-top: 7px;
+  color: var(--red);
+  font-family: "Bad Script", cursive;
+  font-size: 28px;
+  text-align: center;
+}
+
+.meeting-copy p:last-child {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 28px 18px;
+  border-bottom: 2px solid var(--line);
+}
+
+.photo-strip figure {
+  padding: 8px;
+  background: rgba(255, 250, 240, 0.76);
+  border: 1px solid var(--fine-line);
+  box-shadow: 0 8px 22px rgba(44, 30, 16, 0.13);
+}
+
+.photo-strip figure:nth-child(odd) { transform: rotate(-1.5deg); }
+.photo-strip figure:nth-child(even) { transform: rotate(1.5deg); }
+
+.photo-strip img {
+  aspect-ratio: 4 / 5;
+  object-position: center 35%;
+}
+
+.recommendations {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 24px;
+  align-items: end;
+}
+
+.recommendations h2 {
+  font-size: 24px;
+}
+
+.recommendations small {
+  color: var(--red);
+}
+
+.side-effects {
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.side-effects p {
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.forecast {
+  padding: 22px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.forecast p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.forecast span {
+  display: block;
+  margin-top: 10px;
+  font-family: "Bad Script", cursive;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  margin-left: 72px;
+}
+
+.hidden-field {
+  display: none;
+}
+
+.rsvp-form__hint {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.rsvp-form > label,
+.rsvp-form legend {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.rsvp-form input[type="text"],
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: rgba(255, 250, 240, 0.52);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  outline: none;
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 2px 0 rgba(138, 47, 36, 0.18);
+}
+
+.rsvp-form fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rsvp-form legend {
+  grid-column: 1 / -1;
+}
+
+.radio {
+  cursor: pointer;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio span {
+  display: grid;
+  min-height: 48px;
+  padding: 10px 12px;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 240, 0.32);
+  font-size: 13px;
+  text-align: center;
+}
+
+.radio input:checked + span {
+  color: var(--white);
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  padding: 11px 24px;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background: var(--red);
+  border: 1px solid var(--red);
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.button:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+.button--outline {
+  color: var(--red);
+  background: transparent;
+}
+
+.form-message {
+  margin: 0;
+  padding: 14px;
+  color: var(--red);
+  background: rgba(138, 47, 36, 0.08);
+  text-align: center;
+}
+
+.response-card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  background: rgba(255, 250, 240, 0.46);
+  border: 1px solid var(--line);
+}
+
+.response-card p {
+  color: var(--red);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.response-card textarea { resize: vertical; }
+.response-card[hidden] { display: none; }
+
+.card-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 210px;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 18px 6px;
+}
+
+.signature {
+  display: flex;
+  gap: 14px;
+  align-items: end;
+}
+
+.signature span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.signature strong {
+  min-width: 250px;
+  padding-left: 18px;
+  color: var(--red);
+  border-bottom: 1px solid var(--line);
+  font-family: "Bad Script", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.stamp {
+  display: grid;
+  width: 168px;
+  height: 168px;
+  place-items: center;
+  justify-self: end;
+  color: var(--red);
+  border: 7px double var(--red);
+  border-radius: 50%;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-9deg);
+}
+
+.sister-credit {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin: 16px auto 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(31, 29, 26, 0.58);
+  font-size: 10px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.sister-credit img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.sister-credit a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+@media (max-width: 860px) {
+  body {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .medical-card {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .card-header,
+  .hero-record,
+  .meeting-grid,
+  .recommendations,
+  .card-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    gap: 14px;
+    text-align: center;
+  }
+
+  .medical-sign {
+    display: none;
+  }
+
+  .card-meta {
+    min-height: auto;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .heart-icon {
+    top: 8px;
+    right: 8px;
+    font-size: 48px;
+  }
+
+  h1 {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  h1 span {
+    grid-column: auto;
+  }
+
+  .hero-record {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+
+  .record-row {
+    grid-template-columns: 1fr;
+  }
+
+  .record-label,
+  .record-value,
+  .record-code {
+    border-left: 0;
+  }
+
+  .record-value,
+  .record-code {
+    padding-top: 0;
+  }
+
+  .rsvp-form {
+    margin-left: 0;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .rsvp-form fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  .card-footer {
+    text-align: center;
+  }
+
+  .signature {
+    justify-content: center;
+  }
+
+  .signature strong {
+    min-width: 0;
+  }
+
+  .stamp {
+    justify-self: center;
+  }
+
+  .sister-credit {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .medical-card::before,
+  .medical-card::after {
+    display: none;
+  }
+
+  .medical-card {
+    padding: 10px;
+  }
+
+  .document-title {
+    font-size: 34px;
+  }
+
+  .document-subtitle,
+  .record-label,
+  h2 {
+    font-size: 20px;
+  }
+
+  .patient-names p,
+  .script-value {
+    font-size: 30px;
+  }
+
+  .accent {
+    font-size: 36px;
+  }
+
+  .place strong,
+  .place span {
+    font-size: 29px;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp {
+    width: 142px;
+    height: 142px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
