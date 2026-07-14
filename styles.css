@@ -694,6 +694,29 @@ h2 {
   text-decoration: none;
 }
 
+.success-card {
+  display: grid;
+  min-height: min(720px, calc(100vh - 56px));
+  place-items: center;
+}
+
+.success-message {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  max-width: 720px;
+  justify-items: center;
+  gap: 20px;
+  padding: 72px 24px;
+  text-align: center;
+}
+
+.success-message > span {
+  color: var(--red);
+  font-size: 76px;
+  line-height: 1;
+}
+
 @media (max-width: 860px) {
   body {
     padding: 12px;

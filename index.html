@@ -126,7 +126,7 @@
         <span aria-hidden="true">♡</span>
         <h2>Подтвердите присутствие</h2>
       </div>
-      <form class="rsvp-form" id="rsvpForm" name="wedding-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form class="rsvp-form" id="rsvpForm" name="wedding-rsvp" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="wedding-rsvp">
         <label class="hidden-field">
           Не заполняйте это поле
@@ -151,7 +151,6 @@
           <textarea name="comment" rows="3" placeholder="Особенности питания, аллергии или тёплые слова"></textarea>
         </label>
         <button class="button" type="submit">Отправить ответ</button>
-        <p class="form-message" id="formMessage" role="status" hidden></p>
       </form>
     </section>
 
